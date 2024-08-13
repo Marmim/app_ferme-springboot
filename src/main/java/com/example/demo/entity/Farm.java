@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -22,6 +23,7 @@ public class Farm {
 
   private Double longitude;
 
+  @JsonIgnore
   @ManyToOne public User user;
 
   @ManyToMany

@@ -11,6 +11,9 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
+  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+  public List<Farm> farms = new ArrayList<>();
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -24,9 +27,6 @@ public class User implements UserDetails {
   @Column(nullable = false, unique = true)
   private String email;
 
-  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-  public List<Farm> farms = new ArrayList<>();
-
   // Getters and setters
   public Long getId() {
     return id;
@@ -38,6 +38,10 @@ public class User implements UserDetails {
 
   public String getUsername() {
     return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   @Override
@@ -60,10 +64,6 @@ public class User implements UserDetails {
     return UserDetails.super.isEnabled();
   }
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return List.of();
@@ -83,5 +83,30 @@ public class User implements UserDetails {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public List<Farm> getFarms() {
+    return farms;
+  }
+
+  public void setFarms(List<Farm> farms) {
+    this.farms = farms;
+  }
+
+  @Override
+  public String toString() {
+    return "User{"
+        + "id="
+        + id
+        + ", username='"
+        + username
+        + '\''
+        + ", password='"
+        + password
+        + '\''
+        + ", email='"
+        + email
+        + '\''
+        + '}';
   }
 }

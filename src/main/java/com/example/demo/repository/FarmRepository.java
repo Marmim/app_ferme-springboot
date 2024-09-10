@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface FarmRepository extends JpaRepository<Farm, Integer> {
   List<Farm> findAllByUser(User user);
+
+  Farm findById(int id);
 }

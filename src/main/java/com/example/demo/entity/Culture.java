@@ -12,12 +12,24 @@ public class Culture {
   private String nom;
   private double coefficient;
 
+  public int getId() {
+    return id;
+  }
+
   public void setId(int id) {
     this.id = id;
   }
 
+  public String getNom() {
+    return nom;
+  }
+
   public void setNom(String nom) {
     this.nom = nom;
+  }
+
+  public double getCoefficient() {
+    return coefficient;
   }
 
   public void setCoefficient(double cultureCoefficient) {

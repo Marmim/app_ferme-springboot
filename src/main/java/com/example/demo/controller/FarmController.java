@@ -63,6 +63,7 @@ public class FarmController {
         cultureDTO -> {
           Culture culture = new Culture();
           culture.setNom(cultureDTO.nom);
+          culture.setDateSemis(cultureDTO.dateSemis);
           cultureRepository.save(culture);
           cultures.add(culture);
         });
